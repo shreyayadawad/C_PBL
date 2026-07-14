@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Placement Readiness Analyzer</title>
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --accent-blue: #3b82f6;
+            --accent-glow: #6366f1;
+            --text-main: #f8fafc;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .upload-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            width: 450px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        p {
+            color: #94a3b8;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+        .file-input-wrapper {
+            margin-bottom: 25px;
+        }
+        input[type="file"] {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            width: 85%;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            outline: none;
+        }
+        .analyze-btn {
+            background: linear-gradient(90deg, #3b82f6, #6366f1);
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+            width: 93%;
+        }
+        .analyze-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+<div class="upload-card">
+    <h1>AI Placement<br>Readiness Analyzer</h1>
+    <p>Transform your resume into personalized placement insights and career guidance.</p>
+    
+    <!-- SUBMISSION FORM LINKED DIRECTLY TO COMPILED C BACKEND PROGRAM -->
+    <form action="/cgi-bin/analyzer" method="POST" enctype="multipart/form-data">
+        <div class="file-input-wrapper">
+            <input type="file" name="resume" required>
+        </div>
+        <button type="submit" class="analyze-btn">Analyze Resume</button>
+    </form>
+</div>
+
+</body>
+</html>

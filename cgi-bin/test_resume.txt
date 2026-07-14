@@ -1,0 +1,47 @@
+====================================================================
+ALEX WILLIAMS - COMPUTER SCIENCE UNDERGRADUATE RESUME
+====================================================================
+Contact: alex.williams@email.com | Semester: 5 | Dept: CSE
+Current Academic Metrics: CGPA 6.8 / 10.0
+
+--------------------------------------------------------------------
+[+] PROFESSIONAL SUMMARY
+--------------------------------------------------------------------
+Motivated third-year Computer Science student with practical exposure 
+to full-stack web applications and cloud infrastructure design. Strong 
+foundational grasp of software construction, engineering design modules, 
+and version control frameworks. Seeking an internship role to apply 
+applied systems thinking.
+
+--------------------------------------------------------------------
+[+] COMPLETED CORE PROJECTS
+--------------------------------------------------------------------
+1. Smart Inventory Management System
+   - Built an automated item tracking pipeline using Python and Flask.
+   - Connected database architectures to keep record storage synchronized.
+   
+2. Decentralized Peer-to-Peer Chat Framework
+   - Designed a simple multi-threaded messaging model using socket logic.
+   - Handled text streaming protocols and binary file packets locally.
+
+--------------------------------------------------------------------
+[+] CORPORATE EXPERIENCES & CERTIFICATIONS
+--------------------------------------------------------------------
+* Intern Analyst at CloudTech Solutions (2-Month Summer Experience)
+* AWS Certified Cloud Practitioner Certification (Accredited Node)
+
+--------------------------------------------------------------------
+[+] TECHNICAL EXPERTISE STANDINGS
+--------------------------------------------------------------------
+* HIGH PROFICIENCY AREAS:
+  - Core Programming Structures (C, Python, JavaScript)
+  - Quantitative Aptitude & Analytical Logic Systems
+  - Database Management Systems (SQL Engine operations)
+  - Full-stack interface development pipelines
+
+* CRITICAL SKILL GAPS (CURRENTLY LACKING):
+  - Advanced Data Structures & Algorithms (DSA)
+  - Tree implementations, graph traversal matrix structures
+  - Pointer architecture optimization methods
+  - Corporate Presentation & Mock Behavioral Communication
+====================================================================
