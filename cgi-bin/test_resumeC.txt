@@ -1,0 +1,11 @@
+Candidate: Varun Rao
+CGPA: 7.8
+Address: Belagavi, Karnataka
+
+SUMMARY:
+Dedicated systems student with strong mathematics foundations and analytical thinking.
+
+TECHNICAL SKILLS:
+- Algorithms: Data structures, sorting recursion, logic loops
+- Math: Quantitative aptitude, statistical modeling, logical reasoning
+- Communication: Great team speaker and verbal presenter

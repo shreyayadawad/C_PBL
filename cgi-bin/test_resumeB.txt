@@ -1,0 +1,11 @@
+Candidate: Neha Murthy
+CGPA: 9.1
+Address: Mangaluru, Karnataka
+
+SUMMARY:
+High-performing computer science student focused on advanced algorithm design.
+
+TECHNICAL SKILLS:
+- Core DSA: Linked lists, sorting algorithms, recursive trees, binary search, Big-O complexity
+- Programming: Web development fundamentals, HTML, Javascript
+- Professional speaking and strong English presentation skills
