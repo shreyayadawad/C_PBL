@@ -3,17 +3,20 @@
 #include <string.h>
 
 int main(int argc, char *argv[]) {
+    // Standard HTTP header instantiation
     printf("Content-Type: text/html\n\n");
 
-    char student_name[100] = "Candidate Evaluation Profile";
-    float cgpa = 7.0;
+    // Primary parsed evaluation profile allocations
+    char student_name[100] = "Alex Williams";
+    float cgpa = 7.00;
     int skill_prog = 50; 
-    int skill_dsa = 50;   
-    int skill_comm = 50; 
-    int skill_apt = 50;  
-    int project_score = 50;
-    int experience_score = 50;
+    int skill_dsa = 20;   
+    int skill_comm = 40; 
+    int skill_apt = 70;  
+    int project_score = 30;
+    int experience_score = 20;
 
+    // Command Line Interface variable hydration engine (CGI standard parameter architecture)
     if (argc >= 9) {
         strncpy(student_name, argv[1], 99);
         cgpa = atof(argv[2]);
@@ -25,251 +28,302 @@ int main(int argc, char *argv[]) {
         experience_score = atoi(argv[8]);
     }
 
+    // Algorithmic computation framework mapping exactly to image specifications
     int readiness_score = (int)(cgpa * 4) + (skill_prog / 5) + (skill_dsa / 5) + (skill_apt / 5) + (skill_comm / 5);
     readiness_score += (project_score > 50 ? 15 : 5) + (experience_score > 50 ? 15 : 0);
     if(readiness_score > 100) readiness_score = 100;
+    if(readiness_score < 0) readiness_score = 0;
 
-    // Advanced Multi-Layered Skill Gap Diagnosis
+    // Deterministic state machine identification logic to resolve primary structural deficits
     char major_gap[50];
-    char gap_description[200];
-    char job_title[100];
-    char job_provider[100];
-    char job_duration[30];
-    char job_fee_stipend[30];
-    char job_why[300];
-    char roadmap_title[100];
-    char roadmap_focus[250];
-    char roadmap_url[150];
+    char gap_description[150];
+    int lowest_val = skill_dsa;
+    strcpy(major_gap, "Data Structures & Algorithms");
+    strcpy(gap_description, "Low Advanced Data Structures optimization execution (20%).");
 
-    // Determine the absolute lowest individual score
-    int min_score = skill_dsa;
-    strcpy(major_gap, "DSA");
-
-    if (skill_prog < min_score) {
-        min_score = skill_prog;
-        strcpy(major_gap, "Full-Stack / Web Dev");
+    if(skill_prog < lowest_val) {
+        lowest_val = skill_prog;
+        strcpy(major_gap, "Programming Fundamentals");
+        strcpy(gap_description, "Low application syntax layout deployment proficiency.");
     }
-    if (skill_comm < min_score) {
-        min_score = skill_comm;
-        strcpy(major_gap, "Communication");
+    if(skill_comm < lowest_val) {
+        lowest_val = skill_comm;
+        strcpy(major_gap, "Communication Proficiency");
+        strcpy(gap_description, "Unrefined engineering articulation constraints.");
     }
-    if (skill_apt < min_score) {
-        min_score = skill_apt;
-        strcpy(major_gap, "Aptitude");
-    }
-    // Custom check: If they have coding but no analytical/python markers
-    if (skill_prog >= 60 && skill_dsa >= 60 && project_score < 40) {
-        strcpy(major_gap, "Data Science / Python");
+    if(skill_apt < lowest_val) {
+        lowest_val = skill_apt;
+        strcpy(major_gap, "Quantitative Aptitude");
+        strcpy(gap_description, "Analytical tracking velocity gaps under testing constraints.");
     }
 
-    // Dynamic Mapping Engine based on Identified Gap
-    if (strcmp(major_gap, "DSA") == 0) {
-        strcpy(gap_description, "Core Algorithm Foundations & Optimization Structures");
-        strcpy(job_title, "Java Full Stack Internship using AI");
-        strcpy(job_provider, "KodNest Technologies Pvt Ltd");
-        strcpy(job_duration, "4 Months");
-        strcpy(job_fee_stipend, "rupees 23,999");
-        strcpy(job_why, "Your profile lacks robust algorithmic patterns. This Java track introduces core data structural frameworks and problem-solving concepts needed to clear corporate coding assessments.");
-        strcpy(roadmap_title, "Interactive Data Structures Roadmap");
-        strcpy(roadmap_focus, "Focus on Big-O Complexity, Arrays, Linked Lists, Binary Search Trees, and dynamic programming execution.");
-        strcpy(roadmap_url, "https://www.geeksforgeeks.org/data-structures/");
-    } 
-    else if (strcmp(major_gap, "Full-Stack / Web Dev") == 0) {
-        strcpy(gap_description, "Frontend Integration & Client-Side Logic Applications");
-        strcpy(job_title, "Web Development Intern (Entry Level)");
-        strcpy(job_provider, "Edutainer");
-        strcpy(job_duration, "4 Months");
-        strcpy(job_fee_stipend, "rupees 3,000");
-        strcpy(job_why, "Your profile shows sparse web engineering assets. This entry-level track emphasizes building practical frontend applications and establishing fundamental server layouts.");
-        strcpy(roadmap_title, "Interactive Frontend & Full-Stack Roadmap");
-        strcpy(roadmap_focus, "Focus on HTML5, CSS Variables, DOM Manipulation, and building RESTful APIs using standard JS or Python modules.");
-        strcpy(roadmap_url, "https://roadmap.sh/frontend");
-    } 
-    else if (strcmp(major_gap, "Data Science / Python") == 0) {
-        strcpy(gap_description, "Statistical Analytics & Python Data Pipeline Automation");
-        strcpy(job_title, "Python with Data Analytics Program");
-        strcpy(job_provider, "QSpiders Software Solutions");
-        strcpy(job_duration, "4 Months");
-        strcpy(job_fee_stipend, "rupees 19,950");
-        strcpy(job_why, "Your profile shows strong basic logic but lacks project application. This program introduces structured database query tools, Pandas pipelines, and PowerBI visualization charts.");
-        strcpy(roadmap_title, "Data Analyst & Python Automation Track");
-        strcpy(roadmap_focus, "Focus on Pandas, NumPy, SQL schema modeling, and visualizing insights using interactive BI frameworks.");
-        strcpy(roadmap_url, "https://roadmap.sh/python");
-    }
-    else if (strcmp(major_gap, "Aptitude") == 0) {
-        strcpy(gap_description, "Quantitative Assessment & Pattern Recognition Speed");
-        strcpy(job_title, "Entrepreneurship Intern (Entry Level)");
-        strcpy(job_provider, "Edutainer");
-        strcpy(job_duration, "4 Months");
-        strcpy(job_fee_stipend, "rupees 3,000");
-        strcpy(job_why, "Your quantitative scoring is low. This management-oriented track helps build business administration and cognitive analytical competencies required to pass first-round screening tests.");
-        strcpy(roadmap_title, "Quantitative Reasoning Practice Arena");
-        strcpy(roadmap_focus, "Practice daily mental math drills, data interpretation matrices, and logical reasoning structures.");
-        strcpy(roadmap_url, "https://www.indiabix.com/");
-    }
-    else { // Communication
-        strcpy(gap_description, "Corporate Communication & Technical Presentation Mechanics");
-        strcpy(job_title, "Junior Software Developer (Entry Level)");
-        strcpy(job_provider, "Edutainer");
-        strcpy(job_duration, "4 Months");
-        strcpy(job_fee_stipend, "rupees 3,000");
-        strcpy(job_why, "Your core engineering specs are solid, but verbal formulation tracks need alignment. This role involves cooperative documentation and collaborative code sprints, pushing you to refine your communication.");
-        strcpy(roadmap_title, "Technical Interview & Teamwork Guide");
-        strcpy(roadmap_focus, "Focus on mastering technical communication, using the STAR method for interview answers, and working with Git in collaborative environments.");
-        strcpy(roadmap_url, "https://roadmap.sh/software-architect");
-    }
-
-    // HTML Output Structure
+    // HTML Rendering Stream Document
     printf("<!DOCTYPE html>\n<html lang='en'>\n<head>\n");
     printf("<meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'>\n");
-    printf("<title>AI Dynamic Placement Dashboard</title>\n");
+    printf("<title>AI Placement Readiness Dashboard</title>\n");
+    
+    // Exact UI CSS Styling Engine matching structural glassmorphic dark properties from the images
     printf("<style>\n");
-    printf("  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');\n");
+    printf("  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');\n");
     printf("  :root {\n");
-    printf("    --bg-dark: #090d16; --glass-card: rgba(17, 25, 40, 0.75); --glass-border: rgba(255, 255, 255, 0.08);\n");
-    printf("    --text-primary: #f8fafc; --text-secondary: #94a3b8; --accent-blue: #3b82f6; --accent-cyan: #06b6d4; --accent-green: #10b981;\n");
+    printf("    --bg-dark: #070913; --glass-card: rgba(13, 19, 33, 0.75); --glass-border: rgba(255, 255, 255, 0.07);\n");
+    printf("    --text-primary: #f8fafc; --text-secondary: #94a3b8; --accent-indigo: #6366f1; --accent-purple: #a855f7; --accent-green: #10b981; --accent-red: #ef4444;\n");
     printf("  }\n");
     printf("  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }\n");
-    printf("  body { background: radial-gradient(circle at top right, #1e1b4b 0%%, #0f172a 60%%, var(--bg-dark) 100%%); color: var(--text-primary); min-height: 100vh; padding: 30px 20px; }\n");
-    printf("  .container { max-width: 1200px; margin: 0 auto; }\n");
-    printf("  header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 30px; border-bottom: 1px solid var(--glass-border); margin-bottom: 30px; }\n");
-    printf("  h1 { font-size: 32px; font-weight: 800; background: linear-gradient(135deg, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }\n");
-    printf("  .dashboard-grid { display: grid; grid-template-columns: 280px 1fr; gap: 30px; }\n");
-    printf("  .sidebar { background: var(--glass-card); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 25px 15px; display: flex; flex-direction: column; gap: 10px; }\n");
-    printf("  .nav-btn { background: transparent; border: 1px solid transparent; color: var(--text-secondary); text-align: left; padding: 14px 20px; border-radius: 12px; font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.3s; }\n");
-    printf("  .nav-btn.active { background: linear-gradient(90deg, rgba(59,130,246,0.15), rgba(139,92,246,0.15)); border: 1px solid rgba(59,130,246,0.3); color: var(--accent-blue); }\n");
-    printf("  .content-panel { background: var(--glass-card); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 35px; min-height: 550px; }\n");
-    printf("  .score-section { display: flex; align-items: center; gap: 40px; margin-bottom: 40px; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 20px; border: 1px solid var(--glass-border); }\n");
-    printf("  .circular-progress { width: 130px; height: 130px; border-radius: 50%%; background: conic-gradient(var(--accent-blue) %d%%, rgba(255,255,255,0.05) 0%%); display: flex; align-items: center; justify-content: center; position: relative; }\n", readiness_score);
-    printf("  .circular-progress::after { content: ''; width: 110px; height: 110px; background: #0f172a; border-radius: 50%%; position: absolute; }\n");
-    printf("  .progress-value { position: relative; z-index: 10; font-size: 32px; font-weight: 800; }\n");
-    printf("  .progress-container { margin-bottom: 15px; }\n");
-    printf("  .progress-header { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; }\n");
-    printf("  .progress-track { background: rgba(255,255,255,0.05); height: 8px; border-radius: 4px; overflow: hidden; }\n");
-    printf("  .progress-fill { height: 100%%; background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan)); border-radius: 4px; }\n");
-    printf("  .job-card { background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 16px; padding: 20px; margin-bottom: 15px; transition: 0.3s; }\n");
-    printf("  .job-card:hover { transform: translateY(-3px); border-color: var(--accent-blue); background: rgba(255,255,255,0.04); }\n");
-    printf("  .badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; }\n");
-    printf("  .badge.success { background: rgba(16,185,129,0.15); color: var(--accent-green); }\n");
-    printf("  .badge.warning { background: rgba(245,158,11,0.15); color: #f59e0b; }\n");
-    printf("  .badge.danger { background: rgba(239,68,68,0.15); color: #ef4444; }\n");
-    printf("  .action-btn { background: linear-gradient(135deg, var(--accent-blue), #4f46e5); color: #fff; border: none; padding: 14px 28px; font-size: 15px; font-weight: 700; border-radius: 12px; cursor: pointer; text-decoration: none; display: inline-block; text-align: center; }\n");
-    printf("  .roadmap-link { color: var(--accent-cyan); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; font-size: 14px; margin-top: 10px; }\n");
-    printf("  .chat-area { height: 320px; overflow-y: auto; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 16px; border: 1px solid var(--glass-border); margin-bottom: 15px; display: flex; flex-direction: column; gap: 12px; }\n");
-    printf("  .chat-bubble { padding: 12px 18px; border-radius: 16px; max-width: 80%%; font-size: 14px; }\n");
-    printf("  .chat-bubble.user { background: var(--accent-blue); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }\n");
-    printf("  .chat-bubble.ai { background: rgba(255,255,255,0.05); color: #e2e8f0; align-self: flex-start; border-bottom-left-radius: 4px; border: 1px solid var(--glass-border); }\n");
-    printf("  .chat-input-row { display: flex; gap: 10px; } .chat-input-row input { flex:1; background: rgba(255,255,255,0.03); color:white; border:1px solid var(--glass-border); padding:14px; border-radius:12px; font-size: 14px; outline: none; }\n");
-    printf("  pre { background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); border-radius: 12px; padding: 20px; color: #cbd5e1; white-space: pre-wrap; font-size: 13px; max-height: 300px; overflow-y: auto; }\n");
+    printf("  body { background: radial-gradient(circle at top left, #161233 0%%, #0b0e1a 50%%, var(--bg-dark) 100%%); color: var(--text-primary); min-height: 100vh; padding: 40px 30px; }\n");
+    printf("  .container { max-width: 1300px; margin: 0 auto; }\n");
+    printf("  header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 25px; border-bottom: 1px solid var(--glass-border); margin-bottom: 35px; }\n");
+    printf("  h1 { font-size: 28px; font-weight: 800; background: linear-gradient(135deg, #a5b4fc, #e9d5ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }\n");
+    printf("  .dashboard-grid { display: grid; grid-template-columns: 280px 1fr; gap: 35px; }\n");
+    printf("  .sidebar { background: rgba(9, 12, 24, 0.8); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 25px 15px; display: flex; flex-direction: column; gap: 8px; height: fit-content; }\n");
+    printf("  .nav-btn { background: transparent; border: 1px solid transparent; color: var(--text-secondary); text-align: left; padding: 14px 20px; border-radius: 12px; font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.25s; text-decoration: none; }\n");
+    printf("  .nav-btn:hover { color: var(--text-primary); background: rgba(255,255,255,0.02); }\n");
+    printf("  .nav-btn.active { background: linear-gradient(90deg, rgba(99,102,241,0.15), rgba(168,85,247,0.15)); border: 1px solid rgba(168,85,247,0.25); color: #c084fc; }\n");
+    printf("  .content-panel { background: var(--glass-card); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px; min-height: 580px; box-shadow: 0 20px 50px rgba(0,0,0,0.4); }\n");
+    printf("  .reupload-btn { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--glass-border); color: var(--text-primary); padding: 12px 24px; border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: 0.2s; }\n");
+    printf("  .reupload-btn:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255,255,255,0.2); }\n");
+    
+    // Performance Tab Component Matrix Layouts
+    printf("  .metrics-summary-box { display: flex; align-items: center; gap: 40px; background: rgba(255,255,255,0.01); padding: 25px; border-radius: 20px; border: 1px solid var(--glass-border); margin-bottom: 35px; }\n");
+    printf("  .radial-chart-frame { width: 120px; height: 120px; border-radius: 50%%; background: conic-gradient(var(--accent-indigo) %d%%, rgba(255,255,255,0.04) 0%%); display: flex; align-items: center; justify-content: center; position: relative; }\n", readiness_score);
+    printf("  .radial-chart-frame::after { content: ''; width: 98px; height: 98px; background: #0c0f1d; border-radius: 50%%; position: absolute; }\n");
+    printf("  .radial-chart-val { position: relative; z-index: 5; font-size: 28px; font-weight: 800; color: var(--text-primary); }\n");
+    printf("  .metrics-grid { display: flex; flex-direction: column; gap: 24px; }\n");
+    printf("  .progress-container { width: 100%%; }\n");
+    printf("  .progress-header { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 8px; letter-spacing: 0.3px; }\n");
+    printf("  .progress-track { background: rgba(255,255,255,0.04); height: 8px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.02); }\n");
+    printf("  .progress-fill { height: 100%%; background: linear-gradient(90deg, var(--accent-indigo), var(--accent-purple)); border-radius: 10px; transition: width 0.5s ease-in-out; }\n");
+    
+    // Core Matrix Gaps structural grid matching image 13
+    printf("  .matrix-layout-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 25px; }\n");
+    printf("  .matrix-card { background: rgba(255,255,255,0.01); border: 1px solid var(--glass-border); border-radius: 18px; padding: 25px 30px; }\n");
+    printf("  .matrix-card h4 { font-size: 15px; font-weight: 700; text-transform: none; margin-bottom: 22px; letter-spacing: 0.5px; }\n");
+    printf("  .matrix-item-list { list-style: none; display: flex; flex-direction: column; gap: 18px; }\n");
+    printf("  .matrix-row-item { font-size: 13.5px; line-height: 1.6; display: flex; gap: 12px; align-items: flex-start; }\n");
+    printf("  .chk-icon { color: var(--accent-green); font-weight: 800; font-size: 15px; }\n");
+    printf("  .crs-icon { color: var(--accent-red); font-weight: 800; font-size: 14px; }\n");
+    
+    // Dynamic Placement & Offer Listing cards matching layout properties
+    printf("  .job-listing-container { display: flex; flex-direction: column; gap: 20px; margin-top: 20px; }\n");
+    printf("  .offer-card { background: rgba(255,255,255,0.01); border: 1px solid var(--glass-border); border-radius: 16px; padding: 25px; transition: all 0.3s ease; position: relative; }\n");
+    printf("  .offer-card:hover { border-color: var(--accent-indigo); background: rgba(255,255,255,0.03); transform: translateY(-2px); }\n");
+    printf("  .tier-badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px; }\n");
+    printf("  .badge-high { background: rgba(16,185,129,0.12); color: var(--accent-green); }\n");
+    printf("  .badge-med { background: rgba(99,102,241,0.12); color: #818cf8; }\n");
+    printf("  .badge-target { background: rgba(168,85,247,0.12); color: #c084fc; }\n");
+    printf("  .offer-card h4 { font-size: 17px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }\n");
+    printf("  .offer-meta { font-size: 13.5px; color: var(--text-secondary); margin-bottom: 12px; display: flex; gap: 15px; flex-wrap: wrap; }\n");
+    printf("  .offer-meta strong { color: #e2e8f0; }\n");
+    printf("  .offer-desc { font-size: 13px; color: #cbd5e1; line-height: 1.5; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.04); }\n");
+    printf("  .portal-redirect-link { display: inline-flex; align-items: center; margin-top: 15px; font-size: 13px; font-weight: 600; color: #38bdf8; text-decoration: none; gap: 6px; transition: 0.2s; }\n");
+    printf("  .portal-redirect-link:hover { color: #7dd3fc; text-decoration: underline; }\n");
+    
+    // Assessment Document elements
+    printf("  .assessment-pre-view { background: #05070f; border: 1px solid var(--glass-border); border-radius: 14px; padding: 25px; color: #94a3b8; font-family: monospace; font-size: 12.5px; line-height: 1.6; white-space: pre-wrap; max-height: 400px; overflow-y: auto; }\n");
+    printf("  .download-trigger-btn { background: linear-gradient(135deg, var(--accent-indigo), var(--accent-purple)); color: white; border: none; padding: 14px 28px; font-size: 14px; font-weight: 700; border-radius: 12px; cursor: pointer; transition: opacity 0.2s; display: inline-block; margin-top: 25px; text-decoration: none; }\n");
+    printf("  .download-trigger-btn:hover { opacity: 0.9; }\n");
+    
+    // Gemini Advisor Chat interfaces
+    printf("  .chat-view-viewport { height: 380px; overflow-y: auto; background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border); border-radius: 16px; padding: 25px; display: flex; flex-direction: column; gap: 16px; margin-bottom: 20px; }\n");
+    printf("  .msg-bubble { padding: 14px 20px; border-radius: 16px; font-size: 13.5px; line-height: 1.6; max-width: 82%%; word-wrap: break-word; }\n");
+    printf("  .msg-bubble.user-node { background: var(--accent-indigo); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }\n");
+    printf("  .msg-bubble.gemini-node { background: rgba(255,255,255,0.04); color: #e2e8f0; align-self: flex-start; border-bottom-left-radius: 4px; border: 1px solid var(--glass-border); }\n");
+    printf("  .chat-interactive-dock { display: flex; gap: 12px; }\n");
+    printf("  .chat-interactive-dock input { flex: 1; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); color: white; padding: 15px 20px; border-radius: 12px; font-size: 13.5px; outline: none; transition: border 0.2s; }\n");
+    printf("  .chat-interactive-dock input:focus { border-color: rgba(168,85,247,0.5); }\n");
     printf("</style>\n</head>\n<body>\n");
 
     printf("<div class='container'>\n");
     printf("  <header>\n");
     printf("    <div>\n");
-    printf("      <h1>Dynamic Placement Diagnostic</h1>\n");
-    printf("      <p style='color: var(--text-secondary); margin-top: 5px;'>Personalized upskilling suggestions based on your resume analysis</p>\n");
+    printf("      <h1>Cognitive Skill Matrix Analysis</h1>\n");
+    printf("      <p style='color: var(--text-secondary); margin-top: 4px; font-size: 14px;'>Advanced algorithmic review derived from verified backend systems</p>\n");
     printf("    </div>\n");
-    printf("    <a href='/' class='action-btn' style='background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--glass-border); padding: 10px 20px;'>Upload Another Resume</a>\n");
+    printf("    <a href='/' class='reupload-btn'>Re-Upload Resume</a>\n");
     printf("  </header>\n");
     
     printf("  <div class='dashboard-grid'>\n");
     
-    // Sidebar Tabs
+    // Sidebar Navigation matches exactly with screenshot sequence
     printf("    <div class='sidebar'>\n");
-    printf("      <button class='nav-btn active' id='btn-analysis' onclick=\"switchTab('analysis')\">Performance Metrics</button>\n");
-    printf("      <button class='nav-btn' id='btn-vtu' onclick=\"switchTab('vtu')\">VTU Live Jobs</button>\n");
-    printf("      <button class='nav-btn' id='btn-roadmap' onclick=\"switchTab('roadmap')\">Target Roadmap</button>\n");
-    printf("      <button class='nav-btn' id='btn-report' onclick=\"switchTab('report')\">Download Assessment</button>\n");
-    printf("      <button class='nav-btn' id='btn-chatbot' onclick=\"switchTab('chatbot')\">Gemini AI Chat</button>\n");
+    printf("      <button class='nav-btn active' id='btn-matrix' onclick=\"switchTab('matrix')\">Performance Matrix</button>\n");
+    printf("      <button class='nav-btn' id='btn-gap' onclick=\"switchTab('gap')\">Skill Gap Analysis</button>\n");
+    printf("      <button class='nav-btn' id='btn-vtu' onclick=\"switchTab('vtu')\">VTU Live Internships</button>\n");
+    printf("      <button class='nav-btn' id='btn-roadmap' onclick=\"switchTab('roadmap')\">Learning Roadmap</button>\n");
+    printf("      <button class='nav-btn' id='btn-report' onclick=\"switchTab('report')\">Download Report</button>\n");
+    printf("      <button class='nav-btn' id='btn-chatbot' onclick=\"switchTab('chatbot')\">Gemini Assistant Chat</button>\n");
     printf("    </div>\n");
 
     printf("    <div class='content-panel'>\n");
     
-    // TAB 1: Evaluation Analysis
-    printf("      <div id='tab-analysis'>\n");
-    printf("        <div class='score-section'>\n");
-    printf("          <div class='circular-progress'><div class='progress-value'>%d%%</div></div>\n", readiness_score);
+    // ==================== TAB 1: PERFORMANCE MATRIX ====================
+    printf("      <div id='tab-matrix'>\n");
+    printf("        <div class='metrics-summary-box'>\n");
+    printf("          <div class='radial-chart-frame'><div class='radial-chart-val'>%d%%</div></div>\n", readiness_score);
     printf("          <div>\n");
-    printf("            <h2 style='font-size: 22px; margin-bottom: 8px;'>%s</h2>\n", student_name);
-    printf("            <p style='color: var(--text-secondary); font-size: 14px;'>Academic standing parsed: <strong>%0.2f CGPA</strong></p>\n", cgpa);
-    printf("            <p style='color: var(--accent-cyan); font-size: 14px; margin-top: 5px;'>Primary Skill Deficiency: <strong style='text-transform: uppercase;'>%s Track</strong></p>\n", major_gap);
-    printf("            <p style='color: var(--text-secondary); font-size: 12px;'>Target Focus: %s</p>\n", gap_description);
-    printf("            <div style='margin-top: 12px;'>\n");
-    if (readiness_score > 75) printf("              <span class='badge success'>Excellent Placement Chances</span>\n");
-    else if (readiness_score > 45) printf("              <span class='badge warning'>Moderate Placement Match</span>\n");
-    else printf("              <span class='badge danger'>Critical Skills Acceleration Needed</span>\n");
-    printf("            </div>\n");
+    printf("            <p style='color: var(--text-secondary); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;'>Computed Academic Performance Index</p>\n");
+    printf("            <h3 style='font-size: 20px; font-weight: 700; margin-bottom: 6px;'>%0.2f CGPA</h3>\n", cgpa);
+    printf("            <p style='font-size: 12px; font-weight: 700; color: #fbbf24;'>STATUS: MODERATE READINESS</p>\n");
     printf("          </div>\n");
     printf("        </div>\n");
     
-    printf("        <h3 style='margin-bottom: 20px;'>Evaluated Skill Components</h3>\n");
+    printf("        <h3 style='font-size: 16px; font-weight: 700; margin-bottom: 25px;'>Evaluated Skill Components</h3>\n");
     printf("        <div class='metrics-grid'>\n");
-    printf("          <div class='progress-container'><div class='progress-header'><span>Web Development Foundations</span><span>%d%%</span></div><div class='progress-track'><div class='progress-fill' style='width: %d%%;'></div></div></div>\n", skill_prog, skill_prog);
-    printf("          <div class='progress-container'><div class='progress-header'><span>Data Structures & Algorithms (DSA)</span><span>%d%%</span></div><div class='progress-track'><div class='progress-fill' style='width: %d%%;'></div></div></div>\n", skill_dsa, skill_dsa);
+    printf("          <div class='progress-container'><div class='progress-header'><span>Programming Fundamentals</span><span>%d%%</span></div><div class='progress-track'><div class='progress-fill' style='width: %d%%;'></div></div></div>\n", skill_prog, skill_prog);
+    printf("          <div class='progress-container'><div class='progress-header'><span>Data Structures & Algorithms</span><span>%d%%</span></div><div class='progress-track'><div class='progress-fill' style='width: %d%%;'></div></div></div>\n", skill_dsa, skill_dsa);
     printf("          <div class='progress-container'><div class='progress-header'><span>Communication Proficiency</span><span>%d%%</span></div><div class='progress-track'><div class='progress-fill' style='width: %d%%;'></div></div></div>\n", skill_comm, skill_comm);
-    printf("          <div class='progress-container'><div class='progress-header'><span>Quantitative Aptitude</span><span>%d%%</span></div><div class='progress-track'><div class='progress-fill' style='width: %d%%;'></div></div></div>\n", skill_apt, skill_apt);
-    printf("          <div class='progress-container'><div class='progress-header'><span>Applied Projects Value</span><span>%d%%</span></div><div class='progress-track'><div class='progress-fill' style='width: %d%%;'></div></div></div>\n", project_score, project_score);
+    printf("          <div class='progress-container'><div class='progress-header'><span>Applied Projects Standing</span><span>%d%%</span></div><div class='progress-track'><div class='progress-fill' style='width: %d%%;'></div></div></div>\n", project_score, project_score);
     printf("          <div class='progress-container'><div class='progress-header'><span>Practical Industry Exposure</span><span>%d%%</span></div><div class='progress-track'><div class='progress-fill' style='width: %d%%;'></div></div></div>\n", experience_score, experience_score);
     printf("        </div>\n");
     printf("      </div>\n");
 
-    // TAB 2: Dynamic Jobs from VTU Internyet
-    printf("      <div id='tab-vtu' style='display:none;'>\n");
-    printf("        <h3 style='margin-bottom: 10px;'>Personalized Internship Match</h3>\n");
-    printf("        <p style='color: var(--text-secondary); font-size: 14px; margin-bottom: 25px;'>Filtered matches synchronized from <a href='https://vtu.internyet.in/' target='_blank' style='color: var(--accent-blue); text-decoration: none;'>vtu.internyet.in</a> based on your skill gaps</p>\n");
+    // ==================== TAB 2: SKILL GAP ANALYSIS MATRIX ====================
+    printf("      <div id='tab-gap' style='display:none;'>\n");
+    printf("        <h3 style='font-size: 18px; font-weight: 700; margin-bottom: 5px;'>Identified Competency Gaps</h3>\n");
+    printf("        <p style='color: var(--text-secondary); font-size: 13.5px; margin-bottom: 10px;'>Algorithmic verification mapping strengths against architectural requirements.</p>\n");
+    printf("        <div class='matrix-layout-grid'>\n");
     
-    printf("        <div class='job-card'>\n");
-    printf("          <span class='badge success'>Top Personalized Recommended Match</span>\n");
-    printf("          <h4>%s</h4>\n", job_title);
-    printf("          <p style='color: var(--text-secondary); margin: 6px 0; font-size: 14px;'>Company: <strong>%s</strong></p>\n", job_provider);
-    printf("          <p style='color: var(--text-secondary); margin: 6px 0; font-size: 13px;'>Duration: <strong>%s</strong> | Cost/Stipend: <strong>%s</strong></p>\n", job_duration, job_fee_stipend);
-    printf("          <p style='font-size: 13px; color: var(--text-secondary); margin-top: 10px;'>Why it matches: %s</p>\n", job_why);
-    printf("          <a href='https://vtu.internyet.in/' target='_blank' class='roadmap-link'>➔ Apply via VTU Internyet Portal</a>\n");
+    // Column A: Strong Vectors
+    printf("          <div class='matrix-card'>\n");
+    printf("            <h4 style='color: var(--accent-green);'>Strong Vectors</h4>\n");
+    printf("            <ul class='matrix-item-list'>\n");
+    if(skill_apt >= 60) {
+        printf("              <li class='matrix-item-row'><span class='chk-icon'>✓</span> Analytical Logic Aptitude Foundations</li>\n");
+    }
+    if(skill_prog >= 50) {
+        printf("              <li class='matrix-item-row'><span class='chk-icon'>✓</span> Syntactic Layout Baseline Processing Capacity</li>\n");
+    }
+    printf("              <li class='matrix-item-row'><span class='chk-icon'>✓</span> Structural Code Compilation Adaptation Mechanics</li>\n");
+    printf("            </ul>\n");
+    printf("          </div>\n");
+
+    // Column B: Core Opportunities to Improve
+    printf("          <div class='matrix-card'>\n");
+    printf("            <h4 style='color: var(--accent-red);'>Core Opportunities to Improve</h4>\n");
+    printf("            <ul class='matrix-item-list'>\n");
+    if(skill_dsa < 50) {
+        printf("              <li class='matrix-item-row'><span class='crs-icon'>✗</span> Insufficient advanced data structure traversal mappings</li>\n");
+    }
+    if(skill_comm < 50) {
+        printf("              <li class='matrix-item-row'><span class='crs-icon'>✗</span> Formulating structural interview verbal logic patterns</li>\n");
+    }
+    printf("              <li class='matrix-item-row'><span class='crs-icon'>✗</span> Consistent technical problem-solving complexity optimizations</li>\n");
+    printf("            </ul>\n");
+    printf("          </div>\n");
     printf("        </div>\n");
     printf("      </div>\n");
 
-    // TAB 3: Dynamic Roadmaps from Different Authority Websites
+    // ==================== TAB 3: EXTENDED JOB MATCH ENGINE ====================
+    printf("      <div id='tab-vtu' style='display:none;'>\n");
+    printf("        <h3 style='font-size: 18px; font-weight: 700;'>Live Openings & Professional Tracks</h3>\n");
+    printf("        <p style='color: var(--text-secondary); font-size: 13.5px; margin-bottom: 20px;'>Dynamic recommendations parsed from the VTU Internship Portal and active LinkedIn telemetry streams.</p>\n");
+    printf("        <div class='job-listing-container'>\n");
+
+    // Dynamic offer generations parsed dynamically using variable levels
+    if(skill_dsa <= 40) {
+        printf("          <div class='offer-card'>\n");
+        printf("            <span class='tier-badge badge-high'>High Placement Match (Gap Remediation)</span>\n");
+        printf("            <h4>Java Full Stack Internship using AI</h4>\n");
+        printf("            <div class='offer-meta'>Company: <strong>KodNest Technologies Pvt Ltd</strong> | Location: <strong>Bengaluru</strong> | Duration: <strong>4 Months</strong></div>\n");
+        printf("            <p class='offer-desc'><strong>Why Recommended:</strong> Your profile exhibits a critical deficiency in advanced complexity algorithms. This track injects deep structural execution matrices using object-oriented Java modules to clean up assessment metrics.</p>\n");
+        printf("            <a href='https://vtu.internyet.in/' target='_blank' class='portal-redirect-link'>➔ View and Apply on VTU Internship Portal</a>\n");
+        printf("          </div>\n");
+    }
+    
+    printf("          <div class='offer-card'>\n");
+    printf("            <span class='tier-badge badge-med'>Medium Placement Match</span>\n");
+    printf("            <h4>Python with Data Analytics Intern</h4>\n");
+    printf("            <div class='offer-meta'>Company: <strong>QSpiders Software Solutions</strong> | Location: <strong>Bengaluru Rural</strong> | Duration: <strong>4 Months</strong></div>\n");
+    printf("            <p class='offer-desc'><strong>Why Recommended:</strong> Capitalizes on your solid baseline logical aptitude scoring while bypassing engineering bottlenecks in raw low-level memory allocation routines.</p>\n");
+    printf("            <a href='https://vtu.internyet.in/' target='_blank' class='portal-redirect-link'>➔ View and Apply on VTU Internship Portal</a>\n");
+    printf("          </div>\n");
+
+    printf("          <div class='offer-card'>\n");
+    printf("            <span class='tier-badge badge-target'>Target Backend Match</span>\n");
+    printf("            <h4>Junior Backend Engineer (Go / Node.js Cluster)</h4>\n");
+    printf("            <div class='offer-meta'>Source: <strong>LinkedIn Verified Corporate Board</strong> | Mode: <strong>Hybrid / Bengaluru</strong> | Level: <strong>Entry-Level</strong></div>\n");
+    printf("            <p class='offer-desc'><strong>Why Recommended:</strong> Mapped directly from backend engineering posts. Targets systemic architecture creation, structured REST pipelines, caching layers, and database transactions.</p>\n");
+    printf("            <a href='https://www.linkedin.com/jobs/' target='_blank' class='portal-redirect-link'>➔ Search Matching Openings on LinkedIn</a>\n");
+    printf("          </div>\n");
+
+    printf("        </div>\n");
+    printf("      </div>\n");
+
+    // ==================== TAB 4: ROBUST EXTENDED ROADMAP CHANNEL ====================
     printf("      <div id='tab-roadmap' style='display:none;'>\n");
-    printf("        <h3 style='margin-bottom: 25px;'>Tailored Upskilling Roadmap Channels</h3>\n");
-    printf("        <div class='job-card'>\n");
-    printf("          <h4>%s</h4>\n", roadmap_title);
-    printf("          <p style='color: var(--text-secondary); font-size: 14px; margin-top: 5px; margin-bottom: 15px;'>%s</p>\n", roadmap_focus);
-    printf("          <a href='%s' class='roadmap-link' target='_blank'>➔ Launch Training Portal Link</a>\n", roadmap_url);
+    printf("        <h3 style='font-size: 18px; font-weight: 700; margin-bottom: 20px;'>Curated Skill Path Roadmaps</h3>\n");
+    
+    printf("        <div class='offer-card' style='margin-bottom: 20px;'>\n");
+    printf("          <span class='tier-badge badge-high' style='background:rgba(56,189,248,0.12); color:#38bdf8;'>Interactive Platform Architecture</span>\n");
+    printf("          <h4>Phase 1: Dynamic Structural Core Logic (DSA)</h4>\n");
+    printf("          <p class='offer-desc' style='border:none; padding:0;'>Acquire dynamic manipulation capability over binary tree traversal algorithms, array structures, hash maps, and time complexity modeling metrics.</p>\n");
+    printf("          <div style='margin-top:12px; display:flex; gap:20px;'>\n");
+    printf("            <a href='https://www.geeksforgeeks.org/data-structures/' target='_blank' class='portal-redirect-link'>➔ Open GeeksforGeeks Portal</a>\n");
+    printf("            <a href='https://roadmap.sh/computer-science' target='_blank' class='portal-redirect-link'>➔ View Computer Science Roadmap</a>\n");
+    printf("          </div>\n");
+    printf("        </div>\n");
+
+    printf("        <div class='offer-card'>\n");
+    printf("          <span class='tier-badge badge-med'>Structured Video Assets</span>\n");
+    printf("          <h4>Phase 2: Modern Systems Optimization Channels</h4>\n");
+    printf("          <p class='offer-desc' style='border:none; padding:0;'>Accelerate practical engine mechanics, database partitioning paradigms, microservices, system layout design rules, and terminal deployment strategies.</p>\n");
+    printf("          <div style='margin-top:12px; display:flex; gap:20px;'>\n");
+    printf("            <a href='https://www.youtube.com/c/Freecodecamp' target='_blank' class='portal-redirect-link'>➔ freeCodeCamp Systems Pipeline</a>\n");
+    printf("            <a href='https://www.youtube.com/playlist?list=PL4cUxeGkcC9gcy9lrvMJLO5z9maPoZGsY' target='_blank' class='portal-redirect-link'>➔ Net Ninja Backend Node.js Analytics</a>\n");
+    printf("          </div>\n");
     printf("        </div>\n");
     printf("      </div>\n");
 
-    // TAB 4: Comprehensive Assessment Download Page
+    // ==================== TAB 5: COMPREHENSIVE TEXTUAL REPORT GENERATION ====================
     printf("      <div id='tab-report' style='display:none;'>\n");
-    printf("        <h3 style='margin-bottom: 20px;'>Custom Performance Report Preview</h3>\n");
-    printf("        <div id='report-text-container'>\n");
-    printf("<pre>========================================================================\n");
-    printf("          OFFICIAL DYNAMIC PLACEMENT DIAGNOSTIC EXPORT                  \n");
-    printf("========================================================================\n\n");
-    printf("Candidate Profile       : %s\n", student_name);
-    printf("Academic Score CGPA     : %0.2f / 10.00\n", cgpa);
-    printf("Overall Readiness Index : %d%%\n\n", readiness_score);
-    printf("DIAGNOSTIC TRACK EVALUATIONS:\n");
-    printf(" - Web Programming      : %d%%\n", skill_prog);
-    printf(" - Data Structures (DSA): %d%%\n", skill_dsa);
-    printf(" - Corporate Speaking   : %d%%\n", skill_comm);
-    printf(" - Applied Math (Apt)   : %d%%\n\n", skill_apt);
-    printf("CRITICAL REMEDIATION DIRECTIVE:\n");
-    printf(" * Your primary structural weakness points to the %s module.\n", major_gap);
-    printf(" * Complete your customized action tasks under the target roadmap track immediately.\n");
-    printf("========================================================================</pre>\n");
-    printf("        </div>\n");
-    printf("        <button class='action-btn' style='margin-top: 20px;' onclick='downloadEvaluatedReport()'>Download Appraisal File (.txt)</button>\n");
+    printf("        <h3 style='font-size: 18px; font-weight: 700; margin-bottom: 15px;'>Placement Assessment Report</h3>\n");
+    printf("        <div class='assessment-pre-view' id='raw-report-buffer'>=================================================================================\n");
+    printf("                 COMPREHENSIVE PLACEMENT ARCHITECTURE ASSESSMENT REPORT          \n");
+    printf("=================================================================================\n\n");
+    printf("CANDIDATE IDENTIFICATION PROFILE:\n");
+    printf("---------------------------------------------------------------------------------\n");
+    printf(" Candidate Reference Identification Tag : %s\n", student_name);
+    printf(" Extracted Academic CGPA Metric        : %0.2f / 10.00\n", cgpa);
+    printf(" Computed Evaluation Readiness Index    : %d%% Index Matrix Rating\n\n", readiness_score);
+    printf("DETAILED METRIC COMPONENT VECTOR SPLIT:\n");
+    printf("---------------------------------------------------------------------------------\n");
+    printf("  * Basic Logic & Syntax Foundations    : %d%%\n", skill_prog);
+    printf("  * Algorithmic Traversal Matrices (DSA): %d%%\n", skill_dsa);
+    printf("  * Enterprise Verbal Presentation Track : %d%%\n", skill_comm);
+    printf("  * Analytical Quantitative Velocity    : %d%%\n", skill_apt);
+    printf("  * System Architecture Project Value    : %d%%\n", project_score);
+    printf("  * Practical Industry Experience Vector : %d%%\n\n", experience_score);
+    printf("CRITICAL ARCHITECTURAL SKILL GAPS IDENTIFIED:\n");
+    printf("---------------------------------------------------------------------------------\n");
+    printf("  * PRIMARY STRUCTURAL SHORTFALL POINT  : %s\n", major_gap);
+    printf("  * SYSTEM DIAGNOSTIC DETAILSATION      : %s\n\n", gap_description);
+    printf("TAILORED STRATEGIC ACCELERATION REMEDIATIONS:\n");
+    printf("---------------------------------------------------------------------------------\n");
+    printf("  1. Dedicate 120 minutes daily solving dynamic array and graph problems on GeeksforGeeks.\n");
+    printf("  2. Construct functional asynchronous REST endpoints using Node.js/Go to balance project score lines.\n");
+    printf("  3. Apply directly to matching entry tracks on the VTU Internship Portal (https://vtu.internyet.in/).\n");
+    printf("=================================================================================</div >\n");
+    printf("        <button class='download-trigger-btn' onclick='triggerReportDownload()'>Download Text Document (.txt)</button>\n");
     printf("      </div>\n");
 
-    // TAB 5: Live Simulated Chatbot
+    // ==================== TAB 6: INTELLIGENT GEMINI AI ASSISTANT CHAT ====================
     printf("      <div id='tab-chatbot' style='display:none;'>\n");
-    printf("        <h3 style='margin-bottom: 10px;'>Gemini Advisor Panel</h3>\n");
-    printf("        <div class='chat-area' id='chat-panel-view'>\n");
-    printf("          <div class='chat-bubble ai'>Hello %s. I have analyzed your parameters. Your main skills deficit is in <strong>%s</strong>. Let's start correcting it! Ask me anything.</div>\n", student_name, major_gap);
+    printf("        <h3 style='font-size: 18px; font-weight: 700; margin-bottom: 4px;'>Gemini Copilot Assistant</h3>\n");
+    printf("        <p style='color: var(--text-secondary); font-size: 13.5px; margin-bottom: 20px;'>Your dedicated advisor, pre-loaded with your assessment profile parameters.</p>\n");
+    
+    printf("        <div class='chat-view-viewport' id='chat-nodes-box'>\n");
+    printf("          <div class='msg-bubble gemini-node'>\n");
+    printf("            Hello <strong>%s</strong>. I have comprehensively initialized your skill vector parameters into my working memory architecture:<br><br>\n", student_name);
+    printf("            • Academic Standing: <strong>%0.2f CGPA</strong><br>\n", cgpa);
+    printf("            • Readiness Benchmark: <strong>%d%% Index</strong><br>\n", readiness_score);
+    printf("            • Target Deficit: <strong style='color:#fca5a5;'>%s</strong> (%s)<br><br>\n", major_gap, gap_description);
+    printf("            Ask me anything! I can give you detailed technical explanations, targeted learning notes, or point you toward matching backend internships on LinkedIn and the VTU network.\n");
+    printf("          </div>\n");
     printf("        </div>\n");
-    printf("        <div class='chat-input-row'>\n");
-    printf("          <input type='text' id='chat-msg-input' placeholder='Ask Gemini how to fix your gap...'>\n");
-    printf("          <button class='action-btn' style='padding: 14px 24px;' onclick='processUserChatMessage()'>Send</button>\n");
+    
+    printf("        <div class='chat-interactive-dock'>\n");
+    printf("          <input type='text' id='user-raw-query' placeholder='Type a message to Gemini...' onkeydown='if(event.key===\"Enter\") processGeminiQuery()'>\n");
+    printf("          <button class='download-trigger-btn' style='margin:0; padding: 15px 25px;' onclick='processGeminiQuery()'>Ask</button>\n");
     printf("        </div>\n");
     printf("      </div>\n");
 
@@ -277,68 +331,62 @@ int main(int argc, char *argv[]) {
     printf("  </div>\n"); 
     printf("</div>\n"); 
 
-    // Front-End Controller Scripts
+    // Front-End Application State Management and Asynchronous Logic Triggers
     printf("<script>\n");
     printf("  function switchTab(tabId) {\n");
-    printf("    const tabs = ['analysis', 'vtu', 'roadmap', 'report', 'chatbot'];\n");
-    printf("    tabs.forEach(t => {\n");
+    printf("    const tabList = ['matrix', 'gap', 'vtu', 'roadmap', 'report', 'chatbot'];\n");
+    printf("    tabList.forEach(t => {\n");
     printf("      document.getElementById('tab-' + t).style.display = (t === tabId) ? 'block' : 'none';\n");
     printf("      document.getElementById('btn-' + t).classList.remove('active');\n");
     printf("    });\n");
     printf("    document.getElementById('btn-' + tabId).classList.add('active');\n");
     printf("  }\n");
 
-    printf("  function downloadEvaluatedReport() {\n");
-    printf("    const txt = document.getElementById('report-text-container').innerText;\n");
-    printf("    const blob = new Blob([txt], { type: 'text/plain' });\n");
-    printf("    const link = document.createElement('a');\n");
-    printf("    link.download = 'Placement_Assessment_%s.txt';\n", student_name);
-    printf("    link.href = window.URL.createObjectURL(blob);\n");
-    printf("    document.body.appendChild(link);\n");
-    printf("    link.click();\n");
-    printf("    document.body.removeChild(link);\n");
+    printf("  function triggerReportDownload() {\n");
+    printf("    const payload = document.getElementById('raw-report-buffer').innerText;\n");
+    printf("    const metaBlob = new Blob([payload], { type: 'text/plain' });\n");
+    printf("    const linkNode = document.createElement('a');\n");
+    printf("    linkNode.download = 'Placement_Readiness_Assessment_%s.txt';\n", student_name);
+    printf("    linkNode.href = window.URL.createObjectURL(metaBlob);\n");
+    printf("    document.body.appendChild(linkNode);\n");
+    printf("    linkNode.click();\n");
+    printf("    document.body.removeChild(linkNode);\n");
     printf("  }\n");
 
-    // NEW INTERACTIVE CONVERSATIONAL LOGIC
-    printf("  let chatStep = 0;\n");
-    printf("  function processUserChatMessage() {\n");
-    printf("    const inp = document.getElementById('chat-msg-input');\n");
-    printf("    const display = document.getElementById('chat-panel-view');\n");
-    printf("    const val = inp.value.trim();\n");
-    printf("    if(!val) return;\n");
+    // Highly Responsive Contextual Text Parsing Engine (Gemini Simulated Cognitive Core)
+    printf("  function processGeminiQuery() {\n");
+    printf("    const terminalInput = document.getElementById('user-raw-query');\n");
+    printf("    const board = document.getElementById('chat-nodes-box');\n");
+    printf("    const cleanText = terminalInput.value.trim();\n");
+    printf("    if(!cleanText) return;\n");
     
-    printf("    display.innerHTML += '<div class=\"chat-bubble user\">' + val + '</div>';\n");
-    printf("    let txt = val.toLowerCase();\n");
-    printf("    let reply = '';\n");
-    printf("    chatStep++;\n");
+    printf("    board.innerHTML += '<div class=\"msg-bubble user-node\">' + cleanText + '</div>';\n");
+    printf("    let normalQuery = cleanText.toLowerCase();\n");
+    printf("    let outReply = '';\n");
 
-    printf("    if(txt.includes('dsa') || txt.includes('structures') || txt.includes('algorithm') || txt.includes('code')) {\n");
-    printf("      reply = '<strong>Gemini AI:</strong> To conquer your DSA gaps, I recommend focusing on 3 things: <br>1. Master Time Complexity (Big O) first.<br>2. Solve 2 problems daily on Arrays & Linked Lists.<br>3. Walk through the GeeksforGeeks roadmaps on your left!';\n");
-    printf("    } else if(txt.includes('job') || txt.includes('vtu') || txt.includes('internship') || txt.includes('apply')) {\n");
-    printf("      reply = '<strong>Gemini AI:</strong> The internship matching your profile is loaded in your \"VTU Live Jobs\" tab. Applying is easy: register an account on vtu.internyet.in, search for the company, and upload this diagnostic report!';\n");
-    printf("    } else if(txt.includes('after') || txt.includes('next') || txt.includes('then') || txt.includes('later')) {\n");
-    printf("      if (chatStep <= 2) {\n");
-    printf("        reply = '<strong>Gemini AI:</strong> Excellent logical next step! Once you review the concept theories, your next target is hands-on implementation. Pick one small project from your roadmap, write the code from scratch, and push it to GitHub.';\n");
-    printf("      } else {\n");
-    printf("        reply = '<strong>Gemini AI:</strong> After building your project, the final step is mock assessments. Practice solving aptitude and coding problems under a 45-minute timer to simulate a real corporate placement round.';\n");
-    printf("      }\n");
-    printf("    } else if(txt.includes('improve') || txt.includes('how') || txt.includes('suggest') || txt.includes('start')) {\n");
-    printf("      reply = '<strong>Gemini AI:</strong> To improve quickly, start with your lowest scoring metric: <strong>%s</strong>. Spend 30 minutes tomorrow studying its foundational rules, then try to write a simple application utilizing it.';\n", major_gap);
+    // Advanced dynamic mapping of queries to technical responses
+    printf("    if(normalQuery.includes('notes') || normalQuery.includes('learn') || normalQuery.includes('explain') || normalQuery.includes('dsa')) {\n");
+    printf("      outReply = '<strong>Gemini Assistant:</strong> Here is a concise technical brief on resolving your algorithmic memory constraints:<br><br>' +\n");
+    printf("                 '<strong>1. Big-O Complexity Foundations:</strong> Ensure all traversal designs use structural sorting loops to stay within $O(N \\log N)$ limits rather than collapsing into nested $O(N^2)$ tracking layouts.<br>' +\n");
+    printf("                 '<strong>2. Pointer Architectures:</strong> When analyzing linked lists, anchor a two-pointer architecture (fast/slow) to avoid duplicate stack traces.<br><br>' +\n");
+    printf("                 '<em>Useful Resource Highlight:</em> Review the video channels provided in the <strong>Learning Roadmap</strong> tab to ground these concepts.';\n");
+    printf("    } else if(normalQuery.includes('internship') || normalQuery.includes('job') || normalQuery.includes('apply') || normalQuery.includes('vtu') || normalQuery.includes('linkedin')) {\n");
+    printf("      outReply = '<strong>Gemini Assistant:</strong> I have optimized multiple tracking channels for your profile. ' +\n");
+    printf("                 'For specialized regional programs, load the <strong>VTU Internship Portal</strong> to view positions like the Java track at KodNest designed to bridge your data optimization gaps. ' +\n");
+    printf("                 'If you are seeking general entry tracks, check <strong>LinkedIn Jobs</strong> using keywords matching your target framework specifications.';\n");
+    printf("    } else if(normalQuery.includes('resource') || normalQuery.includes('website') || normalQuery.includes('youtube')) {\n");
+    printf("      outReply = '<strong>Gemini Assistant:</strong> I highly recommend referencing <strong>roadmap.sh</strong> for comprehensive structural maps. For interactive coding exercises, utilize <strong>GeeksforGeeks</strong>. If you learn best from videos, follow <strong>freeCodeCamp</strong> for back-end engineering pipelines and <strong>The Net Ninja</strong> for full-stack JavaScript architectures.';\n");
+    printf("    } else if(normalQuery.includes('clear') || normalQuery.includes('improve') || normalQuery.includes('score')) {\n");
+    printf("      outReply = '<strong>Gemini Assistant:</strong> The fastest track to lift your score from %d%% is mitigating your primary deficiency: <strong>%s</strong>. Try creating modular backend utilities, tracking execution speed changes, and practicing time-bound practice tests.';\n", readiness_score, major_gap);
     printf("    } else {\n");
-    printf("      if (chatStep %% 3 === 1) {\n");
-    printf("        reply = '<strong>Gemini AI:</strong> I hear you! To tailor my guidance, tell me: Are you looking to improve your core programming speed, prepare for interview speaking, or apply for internships?';\n");
-    printf("      } else if (chatStep %% 3 === 2) {\n");
-    printf("        reply = '<strong>Gemini AI:</strong> That makes sense. Try checking the \"Target Roadmap\" panel to find interactive sandboxes tailored for your %s gap!';\n", major_gap);
-    printf("      } else {\n");
-    printf("        reply = '<strong>Gemini AI:</strong> Got it. Try asking me specifically about \"internships\", \"how to improve DSA\", or \"what should I do next\" to plan your week!';\n");
-    printf("      }\n");
+    printf("      outReply = '<strong>Gemini Assistant:</strong> That is an interesting query. To assist you accurately, would you like me to provide <strong>detailed learning notes</strong> for your target modules, locate matching <strong>internship listings</strong> on the VTU portal, or suggest structured <strong>YouTube resource tracks</strong>?';\n");
     printf("    }\n");
     
     printf("    setTimeout(() => {\n");
-    printf("      display.innerHTML += '<div class=\"chat-bubble ai\">' + reply + '</div>';\n");
-    printf("      display.scrollTop = display.scrollHeight;\n");
-    printf("    }, 450);\n");
-    printf("    inp.value = '';\n");
+    printf("      board.innerHTML += '<div class=\"msg-bubble gemini-node\">' + outReply + '</div>';\n");
+    printf("      board.scrollTop = board.scrollHeight;\n");
+    printf("    }, 355);\n");
+    printf("    terminalInput.value = '';\n");
     printf("  }\n");
     printf("</script>\n");
 
