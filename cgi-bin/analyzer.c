@@ -178,102 +178,256 @@ int main(int argc, char *argv[]) {
     printf("      </div>\n");
 
     // ==================== TAB 2: SKILL GAP ANALYSIS MATRIX ====================
-    printf("      <div id='tab-gap' style='display:none;'>\n");
-    printf("        <h3 style='font-size: 18px; font-weight: 700; margin-bottom: 5px;'>Identified Competency Gaps</h3>\n");
-    printf("        <p style='color: var(--text-secondary); font-size: 13.5px; margin-bottom: 10px;'>Algorithmic verification mapping strengths against architectural requirements.</p>\n");
-    printf("        <div class='matrix-layout-grid'>\n");
-    
-    // Column A: Strong Vectors
-    printf("          <div class='matrix-card'>\n");
-    printf("            <h4 style='color: var(--accent-green);'>Strong Vectors</h4>\n");
-    printf("            <ul class='matrix-item-list'>\n");
-    if(skill_apt >= 60) {
-        printf("              <li class='matrix-item-row'><span class='chk-icon'>✓</span> Analytical Logic Aptitude Foundations</li>\n");
+    char strengths[10][50];
+    int strength_count = 0;
+    int strength_found = 0;
+    int gap_found = 0;
+    printf("<div id='tab-gap' style='display:none;'>\n");
+    printf("<h3 style='font-size: 18px; font-weight: 700; margin-bottom: 5px;'>Identified Competency Gaps</h3>\n");
+    printf("<p style='color: var(--text-secondary); font-size: 13.5px; margin-bottom: 10px;'>Rule-based analysis of candidate strengths and improvement areas based on extracted resume metrics.</p>\n");
+    printf("<div class='matrix-layout-grid'>\n");
+        /* ================= STRONG AREAS ================= */
+    printf("<div class='matrix-card'>\n");
+    printf("<h4 style='color: var(--accent-green);'>Strong Competencies</h4>\n");
+    printf("<ul class='matrix-item-list'>\n");
+    if(skill_prog >= 50)
+    {
+        strength_found = 1;
+        strcpy(strengths[strength_count], "Programming");
+        strength_count++;
+        printf("<li class='matrix-item-row'><span class='chk-icon'>OK</span> Programming Fundamentals and Coding Ability</li>\n");
     }
-    if(skill_prog >= 50) {
-        printf("              <li class='matrix-item-row'><span class='chk-icon'>✓</span> Syntactic Layout Baseline Processing Capacity</li>\n");
+    if(skill_dsa >= 50)
+    {
+    strength_found = 1;
+    strcpy(strengths[strength_count], "Data Structures");
+    strength_count++;
+    printf("<li class='matrix-item-row'><span class='chk-icon'>OK</span> Data Structures and Algorithmic Understanding</li>\n");
     }
-    printf("              <li class='matrix-item-row'><span class='chk-icon'>✓</span> Structural Code Compilation Adaptation Mechanics</li>\n");
-    printf("            </ul>\n");
-    printf("          </div>\n");
-
-    // Column B: Core Opportunities to Improve
-    printf("          <div class='matrix-card'>\n");
-    printf("            <h4 style='color: var(--accent-red);'>Core Opportunities to Improve</h4>\n");
-    printf("            <ul class='matrix-item-list'>\n");
-    if(skill_dsa < 50) {
-        printf("              <li class='matrix-item-row'><span class='crs-icon'>✗</span> Insufficient advanced data structure traversal mappings</li>\n");
+    if(skill_apt >= 60)
+    {
+    strength_found = 1;
+    printf("<li class='matrix-item-row'><span class='chk-icon'>OK</span> Analytical Thinking and Logical Reasoning</li>\n");
     }
-    if(skill_comm < 50) {
-        printf("              <li class='matrix-item-row'><span class='crs-icon'>✗</span> Formulating structural interview verbal logic patterns</li>\n");
+    if(skill_comm >= 60)
+    {
+    strength_found = 1;
+    strcpy(strengths[strength_count], "Communication");
+    strength_count++;
+    printf("<li class='matrix-item-row'><span class='chk-icon'>OK</span> Communication and Interview Readiness</li>\n");
     }
-    printf("              <li class='matrix-item-row'><span class='crs-icon'>✗</span> Consistent technical problem-solving complexity optimizations</li>\n");
-    printf("            </ul>\n");
-    printf("          </div>\n");
-    printf("        </div>\n");
-    printf("      </div>\n");
-
-    // ==================== TAB 3: EXTENDED JOB MATCH ENGINE ====================
-    printf("      <div id='tab-vtu' style='display:none;'>\n");
-    printf("        <h3 style='font-size: 18px; font-weight: 700;'>Live Openings & Professional Tracks</h3>\n");
-    printf("        <p style='color: var(--text-secondary); font-size: 13.5px; margin-bottom: 20px;'>Dynamic recommendations parsed from the VTU Internship Portal and active LinkedIn telemetry streams.</p>\n");
-    printf("        <div class='job-listing-container'>\n");
-
-    // Dynamic offer generations parsed dynamically using variable levels
-    if(skill_dsa <= 40) {
-        printf("          <div class='offer-card'>\n");
-        printf("            <span class='tier-badge badge-high'>High Placement Match (Gap Remediation)</span>\n");
-        printf("            <h4>Java Full Stack Internship using AI</h4>\n");
-        printf("            <div class='offer-meta'>Company: <strong>KodNest Technologies Pvt Ltd</strong> | Location: <strong>Bengaluru</strong> | Duration: <strong>4 Months</strong></div>\n");
-        printf("            <p class='offer-desc'><strong>Why Recommended:</strong> Your profile exhibits a critical deficiency in advanced complexity algorithms. This track injects deep structural execution matrices using object-oriented Java modules to clean up assessment metrics.</p>\n");
-        printf("            <a href='https://vtu.internyet.in/' target='_blank' class='portal-redirect-link'>➔ View and Apply on VTU Internship Portal</a>\n");
-        printf("          </div>\n");
+    if(project_score >= 50)
+    {
+    strength_found = 1;
+    strcpy(strengths[strength_count], "Software Development");
+    strength_count++;
+    printf("<li class='matrix-item-row'><span class='chk-icon'>OK</span> Practical Project Development Experience</li>\n");
     }
-    
-    printf("          <div class='offer-card'>\n");
-    printf("            <span class='tier-badge badge-med'>Medium Placement Match</span>\n");
-    printf("            <h4>Python with Data Analytics Intern</h4>\n");
-    printf("            <div class='offer-meta'>Company: <strong>QSpiders Software Solutions</strong> | Location: <strong>Bengaluru Rural</strong> | Duration: <strong>4 Months</strong></div>\n");
-    printf("            <p class='offer-desc'><strong>Why Recommended:</strong> Capitalizes on your solid baseline logical aptitude scoring while bypassing engineering bottlenecks in raw low-level memory allocation routines.</p>\n");
-    printf("            <a href='https://vtu.internyet.in/' target='_blank' class='portal-redirect-link'>➔ View and Apply on VTU Internship Portal</a>\n");
-    printf("          </div>\n");
+    if(strength_found == 0)
+    {
+    printf("<li class='matrix-item-row'><span class='chk-icon'>-</span> No major strengths identified yet</li>\n");
+    }
+    printf("</ul>\n");
+    printf("</div>\n");
+    /* ================= IMPROVEMENT AREAS ================= */
+    printf("<div class='matrix-card'>\n");
+    printf("<h4 style='color: var(--accent-red);'>Areas Requiring Improvement</h4>\n");
+    printf("<ul class='matrix-item-list'>\n");
+    if(skill_prog < 50)
+    {
+    gap_found = 1;
+    printf("<li class='matrix-item-row'><span class='crs-icon'>!</span> Improve Programming Fundamentals and Coding Practice</li>\n");
+    }
+    if(skill_dsa < 50)
+    {
+    gap_found = 1;
+    printf("<li class='matrix-item-row'><span class='crs-icon'>!</span> Strengthen Data Structures and Algorithmic Problem Solving</li>\n");
+    }
+    if(skill_comm < 50)
+    {
+    gap_found = 1;
+    printf("<li class='matrix-item-row'><span class='crs-icon'>!</span> Develop Technical Communication and Interview Skills</li>\n");
+    }
+    if(skill_apt < 50)
+    {
+    gap_found = 1;
+    printf("<li class='matrix-item-row'><span class='crs-icon'>!</span> Improve Quantitative Aptitude and Logical Reasoning</li>\n");
+    }
+    if(project_score < 50)
+    {
+    gap_found = 1;
+    printf("<li class='matrix-item-row'><span class='crs-icon'>!</span> Gain More Hands-on Project Development Experience</li>\n");
+    }
+    if(experience_score < 50)
+    {
+    gap_found = 1;
+    printf("<li class='matrix-item-row'><span class='crs-icon'>!</span> Build Industry Exposure Through Internships</li>\n");
+    }
+    if(gap_found == 0)
+    {
+    printf("<li class='matrix-item-row'><span class='chk-icon'>OK</span> No major competency gaps detected</li>\n");
+    }
+    printf("</ul>\n");
+    printf("</div>\n");
+    printf("</div>\n");
+    printf("</div>\n");
 
-    printf("          <div class='offer-card'>\n");
-    printf("            <span class='tier-badge badge-target'>Target Backend Match</span>\n");
-    printf("            <h4>Junior Backend Engineer (Go / Node.js Cluster)</h4>\n");
-    printf("            <div class='offer-meta'>Source: <strong>LinkedIn Verified Corporate Board</strong> | Mode: <strong>Hybrid / Bengaluru</strong> | Level: <strong>Entry-Level</strong></div>\n");
-    printf("            <p class='offer-desc'><strong>Why Recommended:</strong> Mapped directly from backend engineering posts. Targets systemic architecture creation, structured REST pipelines, caching layers, and database transactions.</p>\n");
-    printf("            <a href='https://www.linkedin.com/jobs/' target='_blank' class='portal-redirect-link'>➔ Search Matching Openings on LinkedIn</a>\n");
-    printf("          </div>\n");
+    // ==================== TAB 3: SKILL BASED INTERNSHIP RECOMMENDATION ENGINE ====================
 
-    printf("        </div>\n");
-    printf("      </div>\n");
+printf("      <div id='tab-vtu' style='display:none;'>\n");
+printf("        <h3 style='font-size: 18px; font-weight: 700;'>Recommended Career Opportunities</h3>\n");
+printf("        <p style='color: var(--text-secondary); font-size: 13.5px; margin-bottom: 20px;'>");
+printf("Personalized internship recommendations generated from your identified strengths and competency profile.</p>\n");
+printf("        <div class='job-listing-container'>\n");
+// Check if strengths exist
+if(strength_count == 0)
+{
+    printf("<div class='offer-card'>\n");
+    printf("<span class='tier-badge badge-high'>Profile Analysis Required</span>\n");
+    printf("<h4>No Matching Opportunities Generated</h4>\n");
+    printf("<p class='offer-desc'>");
+    printf("Improve your skill profile to unlock personalized internship recommendations.");
+    printf("</p>\n");
+    printf("</div>\n");
+}
+// Generate recommendations based on strengths
+for(int i = 0; i < strength_count; i++)
+{
+    printf("<div class='offer-card'>\n");
+    printf("<span class='tier-badge badge-med'>Skill Matched Opportunity</span>\n");
+    printf("<h4>%s Based Internships</h4>\n", strengths[i]);
+    printf("<div class='offer-meta'>");
+    printf("Recommended Skill: <strong>%s</strong>", strengths[i]);
+    printf("</div>\n");
+    printf("<p class='offer-desc'>");
+    printf("<strong>Why Recommended:</strong> ");
+    printf("Your resume analysis indicates strength in %s. ");
+    printf("Relevant internship roles have been suggested from external career platforms.");
+    printf("</p>\n", strengths[i]);
+    // Programming recommendation
+    if(strcmp(strengths[i],"Programming") == 0)
+    {
+        printf("<a href='https://www.linkedin.com/jobs/search/?keywords=Programming%%20Internship' target='_blank' class='portal-redirect-link'>");
+        printf("➔ Search Programming Internships on LinkedIn</a><br>\n");
+
+        printf("<a href='https://vtu.internyet.in/internships?q=programming' target='_blank' class='portal-redirect-link'>");
+        printf("➔ Explore VTU Internship Portal</a>\n");
+    }
+    // DSA recommendation
+    else if(strcmp(strengths[i],"Data Structures") == 0)
+    {
+        printf("<a href='https://www.linkedin.com/jobs/search/?keywords=Software%%20Engineer%%20Internship' target='_blank' class='portal-redirect-link'>");
+        printf("➔ Search Software Development Internships on LinkedIn</a><br>\n");
+
+        printf("<a href='https://vtu.internyet.in/internships?q=software%%20engineer' target='_blank' class='portal-redirect-link'>");
+        printf("➔ Explore VTU Internship Portal</a>\n");
+    }
+    // Project recommendation
+    else if(strcmp(strengths[i],"Software Development") == 0)
+    {
+        printf("<a href='https://www.linkedin.com/jobs/search/?keywords=Full%%20Stack%%20Internship' target='_blank' class='portal-redirect-link'>");
+        printf("➔ Search Full Stack Internships on LinkedIn</a><br>\n");
+
+        printf("<a href='https://vtu.internyet.in/internships?q=software%%20developer' target='_blank' class='portal-redirect-link'>");
+        printf("➔ Explore VTU Internship Portal</a>\n");
+    }
+    // Communication recommendation
+    else if(strcmp(strengths[i],"Communication") == 0)
+    {
+        printf("<a href='https://www.linkedin.com/jobs/search/?keywords=Business%%20Analyst%%20Internship' target='_blank' class='portal-redirect-link'>");
+        printf("➔ Search Analyst Internships on LinkedIn</a><br>\n");
+    }
+    printf("</div>\n");
+}
+printf("        </div>\n");
+printf("      </div>\n");
 
     // ==================== TAB 4: ROBUST EXTENDED ROADMAP CHANNEL ====================
-    printf("      <div id='tab-roadmap' style='display:none;'>\n");
-    printf("        <h3 style='font-size: 18px; font-weight: 700; margin-bottom: 20px;'>Curated Skill Path Roadmaps</h3>\n");
-    
-    printf("        <div class='offer-card' style='margin-bottom: 20px;'>\n");
-    printf("          <span class='tier-badge badge-high' style='background:rgba(56,189,248,0.12); color:#38bdf8;'>Interactive Platform Architecture</span>\n");
-    printf("          <h4>Phase 1: Dynamic Structural Core Logic (DSA)</h4>\n");
-    printf("          <p class='offer-desc' style='border:none; padding:0;'>Acquire dynamic manipulation capability over binary tree traversal algorithms, array structures, hash maps, and time complexity modeling metrics.</p>\n");
-    printf("          <div style='margin-top:12px; display:flex; gap:20px;'>\n");
-    printf("            <a href='https://www.geeksforgeeks.org/data-structures/' target='_blank' class='portal-redirect-link'>➔ Open GeeksforGeeks Portal</a>\n");
-    printf("            <a href='https://roadmap.sh/computer-science' target='_blank' class='portal-redirect-link'>➔ View Computer Science Roadmap</a>\n");
-    printf("          </div>\n");
-    printf("        </div>\n");
 
-    printf("        <div class='offer-card'>\n");
-    printf("          <span class='tier-badge badge-med'>Structured Video Assets</span>\n");
-    printf("          <h4>Phase 2: Modern Systems Optimization Channels</h4>\n");
-    printf("          <p class='offer-desc' style='border:none; padding:0;'>Accelerate practical engine mechanics, database partitioning paradigms, microservices, system layout design rules, and terminal deployment strategies.</p>\n");
-    printf("          <div style='margin-top:12px; display:flex; gap:20px;'>\n");
-    printf("            <a href='https://www.youtube.com/c/Freecodecamp' target='_blank' class='portal-redirect-link'>➔ freeCodeCamp Systems Pipeline</a>\n");
-    printf("            <a href='https://www.youtube.com/playlist?list=PL4cUxeGkcC9gcy9lrvMJLO5z9maPoZGsY' target='_blank' class='portal-redirect-link'>➔ Net Ninja Backend Node.js Analytics</a>\n");
-    printf("          </div>\n");
-    printf("        </div>\n");
-    printf("      </div>\n");
+printf(" <div id='tab-roadmap' style='display:none;'>\n");
+printf(" <h3 style='font-size: 18px; font-weight: 700; margin-bottom: 20px;'>Personalized Skill Path Roadmap</h3>\n");
 
+
+if(skill_prog < 50)
+{
+    printf(" <div class='offer-card' style='margin-bottom:20px;'>\n");
+    printf(" <span class='tier-badge badge-high'>Programming Skill Gap</span>\n");
+    printf(" <h4>Strengthen Programming Fundamentals</h4>\n");
+    printf(" <p class='offer-desc' style='border:none; padding:0;'>Your programming score indicates improvement is required. Focus on C programming, syntax, debugging, problem solving and coding practice.</p>\n");
+    printf(" <div style='margin-top:12px; display:flex; gap:15px;'>\n");
+    printf(" <a href='https://www.youtube.com/@freecodecamp' target='_blank' class='portal-redirect-link'>➔ FreeCodeCamp Videos</a>\n");
+    printf(" </div>\n");
+    printf(" </div>\n");
+}
+
+
+if(skill_dsa < 50)
+{
+    printf(" <div class='offer-card' style='margin-bottom:20px;'>\n");
+    printf(" <span class='tier-badge badge-high'>DSA Skill Gap</span>\n");
+    printf(" <h4>Improve Data Structures and Algorithms</h4>\n");
+    printf(" <p class='offer-desc' style='border:none; padding:0;'>Develop algorithmic thinking by practicing arrays, linked lists, stacks, queues, trees, graphs, sorting and complexity analysis.</p>\n");
+    printf(" <div style='margin-top:12px; display:flex; gap:15px;'>\n");
+    printf(" <a href='https://www.geeksforgeeks.org/data-structures/' target='_blank' class='portal-redirect-link'>➔ GeeksForGeeks DSA</a>\n");
+    printf(" <a href='https://takeuforward.org/dsa/strivers-a2z-sheet-learn-dsa-a-to-z' target='_blank' class='portal-redirect-link'>➔ Striver DSA Roadmap</a>\n");
+    printf(" </div>\n");
+    printf(" </div>\n");
+}
+
+
+if(skill_comm < 50)
+{
+    printf(" <div class='offer-card' style='margin-bottom:20px;'>\n");
+    printf(" <span class='tier-badge badge-med'>Communication Improvement</span>\n");
+    printf(" <h4>Enhance Interview Communication</h4>\n");
+    printf(" <p class='offer-desc' style='border:none; padding:0;'>Improve technical communication, presentation skills and confidence through mock interviews.</p>\n");
+    printf(" <div style='margin-top:12px; display:flex; gap:15px;'>\n");
+    printf(" <a href='https://www.coursera.org/learn/communication-skills' target='_blank' class='portal-redirect-link'>➔ Communication Skills Course</a>\n");
+    printf(" </div>\n");
+    printf(" </div>\n");
+}
+
+
+if(skill_apt < 50)
+{
+    printf(" <div class='offer-card' style='margin-bottom:20px;'>\n");
+    printf(" <span class='tier-badge badge-med'>Aptitude Development</span>\n");
+    printf(" <h4>Placement Aptitude Preparation</h4>\n");
+    printf(" <p class='offer-desc' style='border:none; padding:0;'>Practice quantitative aptitude, logical reasoning and placement examination problems.</p>\n");
+    printf(" <div style='margin-top:12px; display:flex; gap:15px;'>\n");
+    printf(" <a href='https://www.indiabix.com/' target='_blank' class='portal-redirect-link'>➔ IndiaBix Aptitude Practice</a>\n");
+    printf(" </div>\n");
+    printf(" </div>\n");
+}
+
+
+if(project_score < 50)
+{
+    printf(" <div class='offer-card' style='margin-bottom:20px;'>\n");
+    printf(" <span class='tier-badge badge-target'>Project Enhancement</span>\n");
+    printf(" <h4>Build Technical Projects</h4>\n");
+    printf(" <p class='offer-desc' style='border:none; padding:0;'>Develop practical projects, improve your GitHub portfolio and gain hands-on implementation experience.</p>\n");
+    printf(" <div style='margin-top:12px; display:flex; gap:15px;'>\n");
+    printf(" <a href='https://github.com/topics/beginner-projects' target='_blank' class='portal-redirect-link'>➔ GitHub Project Ideas</a>\n");
+    printf(" <a href='https://roadmap.sh/' target='_blank' class='portal-redirect-link'>➔ Developer Roadmaps</a>\n");
+    printf(" </div>\n");
+    printf(" </div>\n");
+}
+
+
+if(experience_score < 50)
+{
+    printf(" <div class='offer-card' style='margin-bottom:20px;'>\n");
+    printf(" <span class='tier-badge badge-target'>Industry Preparation</span>\n");
+    printf(" <h4>Gain Internship Experience</h4>\n");
+    printf(" <p class='offer-desc' style='border:none; padding:0;'>Apply for internships and technical programs to gain real-world industry exposure.</p>\n");
+    printf(" <div style='margin-top:12px; display:flex; gap:15px;'>\n");
+    printf(" <a href='https://vtu.internyet.in/' target='_blank' class='portal-redirect-link'>➔ VTU Internship Portal</a>\n");
+    printf(" <a href='https://www.linkedin.com/jobs/' target='_blank' class='portal-redirect-link'>➔ LinkedIn Jobs</a>\n");
+    printf(" </div>\n");
+    printf(" </div>\n");
+    }
+    printf(" </div>\n");
     // ==================== TAB 5: COMPREHENSIVE TEXTUAL REPORT GENERATION ====================
     printf("      <div id='tab-report' style='display:none;'>\n");
     printf("        <h3 style='font-size: 18px; font-weight: 700; margin-bottom: 15px;'>Placement Assessment Report</h3>\n");
@@ -297,14 +451,40 @@ int main(int argc, char *argv[]) {
     printf("---------------------------------------------------------------------------------\n");
     printf("  * PRIMARY STRUCTURAL SHORTFALL POINT  : %s\n", major_gap);
     printf("  * SYSTEM DIAGNOSTIC DETAILSATION      : %s\n\n", gap_description);
-    printf("TAILORED STRATEGIC ACCELERATION REMEDIATIONS:\n");
+    printf("TAILORED SKILL DEVELOPMENT RECOMMENDATIONS:\n");
     printf("---------------------------------------------------------------------------------\n");
-    printf("  1. Dedicate 120 minutes daily solving dynamic array and graph problems on GeeksforGeeks.\n");
-    printf("  2. Construct functional asynchronous REST endpoints using Node.js/Go to balance project score lines.\n");
-    printf("  3. Apply directly to matching entry tracks on the VTU Internship Portal (https://vtu.internyet.in/).\n");
-    printf("=================================================================================</div >\n");
-    printf("        <button class='download-trigger-btn' onclick='triggerReportDownload()'>Download Text Document (.txt)</button>\n");
-    printf("      </div>\n");
+    if(strcmp(major_gap,"Data Structures & Algorithms") == 0)
+    {
+        printf("  1. Strengthen algorithmic problem-solving skills by practicing arrays, trees, graphs, and dynamic programming problems.\n");
+        printf("  2. Regularly solve coding challenges on platforms such as GeeksforGeeks and LeetCode to improve implementation efficiency.\n");
+        printf("  3. Explore Software Engineer internship opportunities that emphasize strong data structures and problem-solving skills.\n");
+    }
+    else if(strcmp(major_gap,"Programming Fundamentals") == 0)
+    {
+        printf("  1. Improve programming foundations by strengthening syntax, logic building, and object-oriented programming concepts.\n");
+        printf("  2. Develop small-scale projects to gain practical implementation experience.\n");
+        printf("  3. Practice coding exercises regularly to improve programming confidence and accuracy.\n");
+    }
+
+    else if(strcmp(major_gap,"Communication Proficiency") == 0)
+    {
+        printf("  1. Enhance technical communication skills through mock interviews and project explanations.\n");
+        printf("  2. Practice presenting technical concepts clearly and effectively.\n");
+        printf("  3. Participate in discussions, presentations, and collaborative activities to improve professional communication.\n");
+    }   
+
+   else if(strcmp(major_gap,"Quantitative Aptitude") == 0)
+    {
+        printf("  1. Improve quantitative reasoning through regular practice of aptitude and logical reasoning problems.\n");
+        printf("  2. Analyze placement assessment patterns and develop faster problem-solving approaches.\n");
+        printf("  3. Strengthen mathematical reasoning required for technical recruitment processes.\n");
+    }
+
+    printf("  4. Explore suitable internship opportunities through verified career platforms such as the VTU Internship Portal and LinkedIn.\n");
+    printf("=================================================================================\n");
+    printf("</div>\n");
+    printf("<button class='download-trigger-btn' onclick='triggerReportDownload()'>Download Text Document (.txt)</button>\n");
+    printf(" </div>\n");
 
     // ==================== TAB 6: INTELLIGENT GEMINI AI ASSISTANT CHAT ====================
     printf("      <div id='tab-chatbot' style='display:none;'>\n");
@@ -314,10 +494,9 @@ int main(int argc, char *argv[]) {
     printf("        <div class='chat-view-viewport' id='chat-nodes-box'>\n");
     printf("          <div class='msg-bubble gemini-node'>\n");
     printf("            Hello <strong>%s</strong>. I have comprehensively initialized your skill vector parameters into my working memory architecture:<br><br>\n", student_name);
-    printf("            • Academic Standing: <strong>%0.2f CGPA</strong><br>\n", cgpa);
-    printf("            • Readiness Benchmark: <strong>%d%% Index</strong><br>\n", readiness_score);
-    printf("            • Target Deficit: <strong style='color:#fca5a5;'>%s</strong> (%s)<br><br>\n", major_gap, gap_description);
-    printf("            Ask me anything! I can give you detailed technical explanations, targeted learning notes, or point you toward matching backend internships on LinkedIn and the VTU network.\n");
+    printf("            &bull; Academic Standing: <strong>%0.2f CGPA</strong><br>\n", cgpa);
+    printf("            &bull; Readiness Benchmark: <strong>%d%% Index</strong><br>\n", readiness_score);
+    printf("            &bull; Target Deficit: <strong style='color:#fca5a5;'>%s</strong> (%s)<br><br>\n", major_gap, gap_description);printf("            Ask me anything! I can give you detailed technical explanations, targeted learning notes, or point you toward matching backend internships on LinkedIn and the VTU network.\n");
     printf("          </div>\n");
     printf("        </div>\n");
     
@@ -354,39 +533,53 @@ int main(int argc, char *argv[]) {
     printf("  }\n");
 
     // Highly Responsive Contextual Text Parsing Engine (Gemini Simulated Cognitive Core)
-    printf("  function processGeminiQuery() {\n");
+    printf("  function formatGeminiReply(text) {\n");
+    printf("    return text\n");
+    printf("      .replace(/^### (.*$)/gm, '<h3>$1</h3>')\n");
+    printf("      .replace(/^## (.*$)/gm, '<h2>$1</h2>')\n");
+    printf("      .replace(/\\*\\*(.*?)\\*\\*/g, '<strong>$1</strong>')\n");
+    printf("      .replace(/^\\* (.*$)/gm, '<li>$1</li>')\n");
+    printf("      .replace(/\\n/g, '<br>');\n");
+    printf("  }\n");
+    printf("  async function processGeminiQuery() {\n");
     printf("    const terminalInput = document.getElementById('user-raw-query');\n");
     printf("    const board = document.getElementById('chat-nodes-box');\n");
     printf("    const cleanText = terminalInput.value.trim();\n");
     printf("    if(!cleanText) return;\n");
-    
     printf("    board.innerHTML += '<div class=\"msg-bubble user-node\">' + cleanText + '</div>';\n");
-    printf("    let normalQuery = cleanText.toLowerCase();\n");
-    printf("    let outReply = '';\n");
-
-    // Advanced dynamic mapping of queries to technical responses
-    printf("    if(normalQuery.includes('notes') || normalQuery.includes('learn') || normalQuery.includes('explain') || normalQuery.includes('dsa')) {\n");
-    printf("      outReply = '<strong>Gemini Assistant:</strong> Here is a concise technical brief on resolving your algorithmic memory constraints:<br><br>' +\n");
-    printf("                 '<strong>1. Big-O Complexity Foundations:</strong> Ensure all traversal designs use structural sorting loops to stay within $O(N \\log N)$ limits rather than collapsing into nested $O(N^2)$ tracking layouts.<br>' +\n");
-    printf("                 '<strong>2. Pointer Architectures:</strong> When analyzing linked lists, anchor a two-pointer architecture (fast/slow) to avoid duplicate stack traces.<br><br>' +\n");
-    printf("                 '<em>Useful Resource Highlight:</em> Review the video channels provided in the <strong>Learning Roadmap</strong> tab to ground these concepts.';\n");
-    printf("    } else if(normalQuery.includes('internship') || normalQuery.includes('job') || normalQuery.includes('apply') || normalQuery.includes('vtu') || normalQuery.includes('linkedin')) {\n");
-    printf("      outReply = '<strong>Gemini Assistant:</strong> I have optimized multiple tracking channels for your profile. ' +\n");
-    printf("                 'For specialized regional programs, load the <strong>VTU Internship Portal</strong> to view positions like the Java track at KodNest designed to bridge your data optimization gaps. ' +\n");
-    printf("                 'If you are seeking general entry tracks, check <strong>LinkedIn Jobs</strong> using keywords matching your target framework specifications.';\n");
-    printf("    } else if(normalQuery.includes('resource') || normalQuery.includes('website') || normalQuery.includes('youtube')) {\n");
-    printf("      outReply = '<strong>Gemini Assistant:</strong> I highly recommend referencing <strong>roadmap.sh</strong> for comprehensive structural maps. For interactive coding exercises, utilize <strong>GeeksforGeeks</strong>. If you learn best from videos, follow <strong>freeCodeCamp</strong> for back-end engineering pipelines and <strong>The Net Ninja</strong> for full-stack JavaScript architectures.';\n");
-    printf("    } else if(normalQuery.includes('clear') || normalQuery.includes('improve') || normalQuery.includes('score')) {\n");
-    printf("      outReply = '<strong>Gemini Assistant:</strong> The fastest track to lift your score from %d%% is mitigating your primary deficiency: <strong>%s</strong>. Try creating modular backend utilities, tracking execution speed changes, and practicing time-bound practice tests.';\n", readiness_score, major_gap);
-    printf("    } else {\n");
-    printf("      outReply = '<strong>Gemini Assistant:</strong> That is an interesting query. To assist you accurately, would you like me to provide <strong>detailed learning notes</strong> for your target modules, locate matching <strong>internship listings</strong> on the VTU portal, or suggest structured <strong>YouTube resource tracks</strong>?';\n");
+    printf("    const profile = {\n");
+    printf("       name: '%s',\n", student_name);
+    printf("       cgpa: %f,\n", cgpa);
+    printf("       programming: %d,\n", skill_prog);
+    printf("       dsa: %d,\n", skill_dsa);
+    printf("       communication: %d,\n", skill_comm);
+    printf("       projects: %d,\n", project_score);
+    printf("       gap: \"%s\"\n", major_gap);
+    printf("    };\n");
+    printf("    try {\n");
+    printf("       let response = await fetch('/chat', {\n");
+    printf("          method:'POST',\n");
+    printf("          headers:{'Content-Type':'application/json'},\n");
+    printf("          body: JSON.stringify({\n");
+    printf("              question: cleanText,\n");
+    printf("              profile: profile\n");
+    printf("          })\n");
+    printf("       });\n");
+    printf("       let data = await response.json();\n");
+    printf("       if(data.reply){\n");
+    printf("       board.innerHTML += '<div class=\"msg-bubble gemini-node\">' +\n");
+    printf("       '<strong>Gemini Assistant:</strong><br><br>' +\n");
+    printf("       formatGeminiReply(data.reply) +\n");
+    printf("       '</div>';\n");
+    printf("       }\n");
+    printf("       else{\n");
+    printf("          board.innerHTML += '<div class=\"msg-bubble gemini-node\">No response received from Gemini.</div>';\n");
+    printf("       }\n");printf("    }\n");
+    printf("    catch(error){\n");
+    printf("       board.innerHTML += '<div class=\"msg-bubble gemini-node\">Gemini connection failed.</div>';\n");
     printf("    }\n");
-    
-    printf("    setTimeout(() => {\n");
-    printf("      board.innerHTML += '<div class=\"msg-bubble gemini-node\">' + outReply + '</div>';\n");
-    printf("      board.scrollTop = board.scrollHeight;\n");
-    printf("    }, 355);\n");
-    printf("    terminalInput.value = '';\n");
+    printf("    terminalInput.value='';\n");
+    printf("    board.scrollTop = board.scrollHeight;\n");
     printf("  }\n");
     printf("</script>\n");
 

@@ -1,0 +1,66 @@
+JOHN SMITH
+john.smith@email.com | +91-9876543210 | LinkedIn: /in/johnsmith
+
+EDUCATION
+B.Tech in Computer Science & Engineering
+XYZ Institute of Technology, Bangalore
+CGPA: 8.45 (Out of 10)
+Graduation: May 2024
+
+TECHNICAL SKILLS
+Programming Languages: Python, Java, C++, JavaScript, SQL
+Data Structures: Binary Search Trees, Graphs, Dynamic Programming, Sorting Algorithms
+Frameworks: React, Node.js, Django, Flask
+Databases: MySQL, MongoDB, PostgreSQL
+Tools: Git, Docker, AWS, Linux
+Competitive Programming: LeetCode (1200+ problems), CodeForces (2000+ rating), HackerRank
+
+WORK EXPERIENCE
+
+Senior Intern - Software Development
+TechCorp Solutions, Bangalore (June 2023 - August 2023)
+- Implemented efficient sorting and searching algorithms reducing query time by 40%
+- Developed RESTful APIs using Python and Flask for data processing
+- Optimized database queries using indexing and caching strategies
+- Collaborated with team using Git and code review best practices
+- Mentored junior interns on data structures and algorithm design
+
+Intern - Full Stack Developer  
+StartupXYZ, Bangalore (January 2023 - May 2023)
+- Built responsive web applications using React and Node.js
+- Implemented authentication and authorization mechanisms
+- Tested applications using unit testing and integration testing
+- Debugged and optimized application performance
+
+PROJECTS
+
+E-Commerce Platform (GitHub: github.com/johnsmith/ecommerce)
+- Built full-stack e-commerce application using Python, React, and PostgreSQL
+- Implemented product search with binary search optimization
+- Created recommendation system using dynamic programming
+- Integrated payment gateway using secure API calls
+
+Machine Learning Resume Parser
+- Developed NLP-based resume parser using Python and scikit-learn
+- Created training dataset with 500+ resumes
+- Achieved 92% accuracy in skill extraction
+- Implemented using graph algorithms for skill matching
+
+Algorithm Visualizer Tool
+- Created interactive web tool visualizing sorting and searching algorithms
+- Used JavaScript for frontend animations
+- Implemented DFS, BFS, and Dijkstra's algorithm visualizations
+- Project received 150+ GitHub stars
+
+CERTIFICATIONS & ACHIEVEMENTS
+- Completed Advanced Data Structures course on Coursera
+- Oracle Certified Associate Java Programmer
+- Winner of college programming competition (2023)
+- AWS Solutions Architect - Associate Certification
+
+SOFT SKILLS
+- Strong communication and presentation abilities
+- Public speaking experience at tech meetups and conferences
+- Technical writing - published 5 articles on Medium about algorithms
+- Team collaboration and mentoring experience
+- Problem solving approach to debugging and optimization

@@ -3,22 +3,119 @@ import socketserver
 import subprocess
 import re
 import os
+from urllib import response
 import webbrowser
+from google import genai
+import json
+chat_history = []
 
 PORT = 8000
+client = genai.Client(
+    api_key="ENTER API KEY"
+)
 
 class AdvancedCGIRequestHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
+
         if self.path == "/" or self.path == "/index.html":
+
             self.send_response(200)
-            self.send_header("Content-Type", "text/html")
+            self.send_header("Content-Type","text/html; charset=utf-8")
             self.end_headers()
-            self.wfile.write(self.get_upload_page_html().encode("utf-8"))
+
+            self.wfile.write(
+                self.get_upload_page_html().encode("utf-8")
+            )
+
         else:
             super().do_GET()
-
     def do_POST(self):
-        if self.path == "/analyze":
+
+    # ================= GEMINI CHAT API =================
+
+        if self.path == "/chat":
+
+            content_length = int(self.headers['Content-Length'])
+            post_data = self.rfile.read(content_length)
+
+            try:
+
+                data = json.loads(
+                    post_data.decode("utf-8")
+                )
+
+                question = data["question"]
+                profile = data["profile"]
+                global chat_history
+                chat_history.append(
+                    {
+                        "role": "user",
+                        "message": question
+                    }
+                )
+
+                prompt = f"""
+                You are an AI placement mentor.
+                Student Profile:Name: {profile['name']}
+                CGPA: {profile['cgpa']}
+                Skill Scores:Programming: {profile['programming']}%
+                DSA: {profile['dsa']}%
+                Communication: {profile['communication']}%
+                Projects: {profile['projects']}%
+                Weak Area:{profile['gap']}
+                Previous Conversation:"""
+                for chat in chat_history:
+                     prompt += f"""
+                {chat['role']}: {chat['message']}"""
+                     prompt += f"""
+                     Latest Student Question:{question}
+                     Answer only the latest question.
+                     Use previous conversation context if needed.
+                     Format:
+                     - Use headings
+                     - Use bullet points
+                     - Keep answers practical and concise."""
+                response = client.models.generate_content(model="gemini-flash-lite-latest",
+                    contents=prompt
+                )
+                reply = response.text
+                chat_history.append(
+                    {
+                        "role": "assistant",
+                        "message": reply
+                    }
+                )
+                self.send_response(200)
+                self.send_header(
+                    "Content-Type",
+                    "application/json;charset=utf-8"
+                )
+                self.end_headers()
+                self.wfile.write(
+                    json.dumps(
+                        {
+                            "reply": reply
+                        }
+                    ).encode("utf-8")
+                )
+            except Exception as e:
+                self.send_response(500)
+                self.send_header(
+                    "Content-Type",
+                    "application/json; charset=utf-8"
+                )
+                self.end_headers()
+                self.wfile.write(
+                    json.dumps(
+                        {
+                            "reply": f"Gemini Error: {str(e)}"
+                        }
+                    ).encode("utf-8")
+                )
+            return
+    # ================= RESUME ANALYSIS =================
+        
+        elif self.path == "/analyze":
             content_length = int(self.headers['Content-Length'])
             post_data = self.rfile.read(content_length)
             
@@ -109,13 +206,13 @@ class AdvancedCGIRequestHandler(http.server.SimpleHTTPRequestHandler):
                 output_parts = result.stdout.split("\n\n", 1)
                 body_to_write = output_parts[1] if len(output_parts) > 1 else result.stdout
                 
-                self.send_header("Content-Type", "text/html")
+                self.send_header("Content-Type", "text/html; charset=utf-8")
                 self.end_headers()
                 self.wfile.write(body_to_write.encode("utf-8"))
                 
             except Exception as e:
                 self.send_response(500)
-                self.send_header("Content-Type", "text/html")
+                self.send_header("Content-Type", "text/html; charset=utf-8")
                 self.end_headers()
                 self.wfile.write(f"<h2>C Execution Pipeline Failure</h2><p>{str(e)}</p>".encode("utf-8"))
 
